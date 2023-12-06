@@ -1,6 +1,6 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "\tBoas vindas ao Screen Sound!";
-List<string> listaDasBandas = new();
+List<string> listaDasBandas = new() { "U2", "The Beatles", "Calypso"};
 
 
 void ExibirLogo()
@@ -18,6 +18,7 @@ void ExibirLogo()
 
 void ExibirOpcoesDoMenu()
 {
+    Console.Clear();
     ExibirLogo();
 
     Console.WriteLine("\n\t[1] para registrar uma banda");
@@ -26,7 +27,7 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("\t[4] para exibir a média de uma banda");
     Console.WriteLine("\t[0] para sair");
 
-    Console.Write("\nDigite a sua opção: ");
+    Console.Write("\n\tDigite a sua opção: ");
 
     int opcaoEscolhida = int.Parse(Console.ReadLine()!);
 
@@ -34,15 +35,15 @@ void ExibirOpcoesDoMenu()
     {
         case 1: RegistrarBanda();
             break;
-        case 2: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
+        case 2: MostrarBandasRegistradas();
             break;
         case 3: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
             break;
         case 4: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
             break;
-        case 0: Console.WriteLine("Tchau Tchau :)");
+        case 0: Console.WriteLine("\tTchau Tchau :)");
             break;
-        default: Console.WriteLine("Opção Inválida!");
+        default: Console.WriteLine("\tOpção Inválida!");
             break;
     }
 }
@@ -50,18 +51,42 @@ void ExibirOpcoesDoMenu()
 void RegistrarBanda()
 {
     Console.Clear();
+    Console.WriteLine("\t******************");
     Console.WriteLine("\tRegistro de bandas");
+    Console.WriteLine("\t******************\n");
 
-    Console.Write("Digite o nome da banda: ");
+    Console.Write("\tDigite o nome da banda: ");
     string nomeDaBanda = Console.ReadLine()!;
     listaDasBandas.Add(nomeDaBanda);
 
-    Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
-    Thread.Sleep(2000);
+    Console.WriteLine($"\tA banda '{nomeDaBanda}' foi registrada com sucesso!");
 
-    Console.Clear();
+    Console.Write("\t.");
+    Thread.Sleep(500);
+    Console.Write("."); 
+    Thread.Sleep(500);
+    Console.Write("."); 
+    Thread.Sleep(500);
+
     ExibirOpcoesDoMenu();
 }
 
+void MostrarBandasRegistradas()
+{
+    Console.Clear();
+    Console.WriteLine("******************");
+    Console.WriteLine("Bandas Registradas");
+    Console.WriteLine("******************\n");
+
+    foreach(string banda in listaDasBandas)
+    {
+        Console.WriteLine($"Banda: {banda}");
+    }
+
+    Console.WriteLine("\nDigite uma tecla para voltar ao menu");
+    Console.ReadKey();
+    ExibirOpcoesDoMenu();
+
+}
 
 ExibirOpcoesDoMenu();
