@@ -1,7 +1,7 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "\tBoas vindas ao Screen Sound!";
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("Link Park", new List<int> { 10, 8, 6 });
+bandasRegistradas.Add("Linkin Park", new List<int> { 10, 8, 6 });
 bandasRegistradas.Add("The Beatles", new List<int>());
 
 
@@ -39,7 +39,7 @@ void ExibirOpcoesDoMenu()
             break;
         case 2: MostrarBandasRegistradas();
             break;
-        case 3: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
+        case 3: AvaliarBandaRegistrada();
             break;
         case 4: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
             break;
@@ -68,13 +68,8 @@ void RegistrarBanda()
         Console.WriteLine($"\tA banda '{nomeDaBanda}' foi registrada com sucesso!");
     }
 
-    Console.Write("\t.");
-    Thread.Sleep(500);
-    Console.Write("."); 
-    Thread.Sleep(500);
-    Console.Write("."); 
-    Thread.Sleep(500);
-
+    Console.Write("\n\tDigite uma tecla para voltar ao menu ");
+    Console.ReadKey();
     ExibirOpcoesDoMenu();
 }
 
@@ -92,6 +87,31 @@ void MostrarBandasRegistradas()
         {
             Console.WriteLine($"\tBanda: {banda}");
         }
+    }
+
+    Console.Write("\n\tDigite uma tecla para voltar ao menu ");
+    Console.ReadKey();
+    ExibirOpcoesDoMenu();
+}
+
+void AvaliarBandaRegistrada()
+{
+    ExibirTituloDaOpcao("Avaliar Banda Registrada");
+
+    Console.Write("\tDigite o nome da banda que deseja avaliar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+
+    if(bandasRegistradas.ContainsKey(nomeDaBanda))
+    {
+        Console.Write($"\tInforme sua nota para a banda {nomeDaBanda}: ");
+        int notaInformada = int.Parse(Console.ReadLine()!);
+        bandasRegistradas[nomeDaBanda].Add(notaInformada);
+
+        Console.WriteLine($"\n\tA nota {notaInformada} foi registrada com sucesso para a banda '{nomeDaBanda}'!");
+    }
+    else
+    {
+        Console.WriteLine($"\tA banda '{nomeDaBanda}' não foi encontrada!");
     }
 
     Console.Write("\n\tDigite uma tecla para voltar ao menu ");
