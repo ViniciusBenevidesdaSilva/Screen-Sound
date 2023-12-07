@@ -27,6 +27,9 @@
 
         ScreenSoundUI.EscreverFormatado("Digite o nome do Álbum: ", pularLinha: false);
         string nomeDoAlbum = Console.ReadLine()!;
+        
+        ScreenSoundUI.EscreverFormatado("Digite o nome do Gênero da música: ", pularLinha: false);
+        string nomeDoGenero = Console.ReadLine()!;
 
         ScreenSoundUI.EscreverFormatado("Digite [S] se a música estiver disponível no plano, ou [N] caso contrário: ", pularLinha: false);
         bool disponivelNoPlano = Console.ReadLine()!.ToUpper()[0] == 'S';
@@ -38,6 +41,7 @@
             Musica novaMusica = new Musica(album);
             novaMusica.Nome = nomeDaMusica;
             novaMusica.Duracao = duracaoDaMusica;
+            novaMusica.Genero = new Genero() { Nome = nomeDoGenero };
             novaMusica.Disponivel = disponivelNoPlano;
 
             musicaService.RegistrarMusica(novaMusica);
