@@ -159,4 +159,11 @@ void ExibirTituloDaOpcao(string titulo)
     Console.WriteLine($"\t{asteriscos}\n");
 }
 
-ExibirOpcoesDoMenu();
+try
+{
+    ExibirOpcoesDoMenu();
+}
+catch(Exception ex)
+{
+    Console.WriteLine($"\tErro: {ex.Message}");
+}
