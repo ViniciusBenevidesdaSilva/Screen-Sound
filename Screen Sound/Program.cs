@@ -41,7 +41,7 @@ void ExibirOpcoesDoMenu()
             break;
         case 3: AvaliarBandaRegistrada();
             break;
-        case 4: Console.WriteLine("Você escolheu a opção " + opcaoEscolhida);
+        case 4: ExibirMediaBanda();
             break;
         case 0: Console.WriteLine("\tTchau Tchau :)");
             break;
@@ -103,15 +103,44 @@ void AvaliarBandaRegistrada()
 
     if(bandasRegistradas.ContainsKey(nomeDaBanda))
     {
-        Console.Write($"\tInforme sua nota para a banda {nomeDaBanda}: ");
+        Console.Write($"\tInforme sua nota para a Banda {nomeDaBanda}: ");
         int notaInformada = int.Parse(Console.ReadLine()!);
         bandasRegistradas[nomeDaBanda].Add(notaInformada);
 
-        Console.WriteLine($"\n\tA nota {notaInformada} foi registrada com sucesso para a banda '{nomeDaBanda}'!");
+        Console.WriteLine($"\n\tA nota {notaInformada} foi registrada com sucesso para a Banda '{nomeDaBanda}'!");
     }
     else
     {
-        Console.WriteLine($"\tA banda '{nomeDaBanda}' não foi encontrada!");
+        Console.WriteLine($"\tA Banda '{nomeDaBanda}' não foi encontrada!");
+    }
+
+    Console.Write("\n\tDigite uma tecla para voltar ao menu ");
+    Console.ReadKey();
+    ExibirOpcoesDoMenu();
+}
+
+void ExibirMediaBanda()
+{
+    ExibirTituloDaOpcao("Exibir Avaliação Média Banda");
+
+    Console.Write("\tDigite o nome da Banda que deseja exibir a média: ");
+    string nomeDaBanda = Console.ReadLine()!;
+
+    if (bandasRegistradas.ContainsKey(nomeDaBanda))
+    {
+        if(bandasRegistradas[nomeDaBanda].Count == 0)
+        {
+            Console.WriteLine($"\tNenhuma avaliação cadastrada para a Banda '{nomeDaBanda}'.");
+        }
+        else
+        {
+            double avaliacaoMedia = bandasRegistradas[nomeDaBanda].Average();
+            Console.WriteLine($"\tA média da Banda '{nomeDaBanda}' é de {avaliacaoMedia}!");
+        }
+    }
+    else
+    {
+        Console.WriteLine($"\tA Banda '{nomeDaBanda}' não foi encontrada!");
     }
 
     Console.Write("\n\tDigite uma tecla para voltar ao menu ");
