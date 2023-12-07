@@ -1,9 +1,11 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "\tBoas vindas ao Screen Sound!";
+
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
 bandasRegistradas.Add("Linkin Park", new List<int> { 10, 8, 6 });
 bandasRegistradas.Add("The Beatles", new List<int>());
 
+List<Musica> musicasRegistradas = new List<Musica>();
 
 void ExibirLogo()
 {
@@ -27,6 +29,8 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("\t[2] para mostrar todas as bandas");
     Console.WriteLine("\t[3] para avaliar uma banda");
     Console.WriteLine("\t[4] para exibir a média de uma banda");
+    Console.WriteLine("\t[5] para registrar uma música");
+    Console.WriteLine("\t[6] para mostrar todas as músicas");
     Console.WriteLine("\t[0] para sair");
 
     Console.Write("\n\tDigite a sua opção: ");
@@ -42,6 +46,10 @@ void ExibirOpcoesDoMenu()
         case 3: AvaliarBandaRegistrada();
             break;
         case 4: ExibirMediaBanda();
+            break;
+        case 5: RegistrarMusica();
+            break;
+        case 6: MostrarMusicasRegistradas();
             break;
         case 0: Console.WriteLine("\tTchau Tchau :)");
             break;
@@ -148,6 +156,57 @@ void ExibirMediaBanda()
     ExibirOpcoesDoMenu();
 }
 
+void RegistrarMusica()
+{
+    ExibirTituloDaOpcao("Registro de Música");
+
+    Musica novaMusica = new Musica();
+    
+    Console.Write("\tDigite o nome da música: ");
+    novaMusica.nome = Console.ReadLine()!;
+    
+    Console.Write("\tDigite o artista da música: ");
+    novaMusica.artista = Console.ReadLine()!; 
+    
+    Console.Write("\tDigite a duração da música: ");
+    novaMusica.duracao = int.Parse(Console.ReadLine()!); 
+    
+    Console.Write("\tDigite [S] se a música estiver disponível ou [N] caso contrário: ");
+    novaMusica.disponivel = Console.ReadLine()!.ToUpper()[0] == 'S';
+
+
+    musicasRegistradas.Add(novaMusica);
+    
+    Console.WriteLine($"\n\tA música '{novaMusica.nome}' foi registrada com sucesso!");
+
+    Console.Write("\n\tDigite uma tecla para voltar ao menu ");
+    Console.ReadKey();
+    ExibirOpcoesDoMenu();
+}
+
+void MostrarMusicasRegistradas()
+{
+    ExibirTituloDaOpcao("Listagem de Músicas Registradas");
+
+    if (musicasRegistradas.Count == 0)
+    {
+        Console.WriteLine("\tNenhuma música cadastrada!");
+    }
+    else
+    {
+        foreach (Musica musica in musicasRegistradas)
+        {
+            musica.ExibirFichaTecnica();
+            Console.WriteLine();
+
+        }
+    }
+
+    Console.Write("\n\tDigite uma tecla para voltar ao menu ");
+    Console.ReadKey();
+    ExibirOpcoesDoMenu();
+}
+
 void ExibirTituloDaOpcao(string titulo)
 {
     string asteriscos = string.Empty.PadLeft(titulo.Length, '*');
@@ -158,6 +217,7 @@ void ExibirTituloDaOpcao(string titulo)
     Console.WriteLine($"\t{titulo}");
     Console.WriteLine($"\t{asteriscos}\n");
 }
+
 
 try
 {
