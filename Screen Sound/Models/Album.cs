@@ -8,8 +8,9 @@
     public string DescricaoResumida => $"Álbum: {Nome}, Duração: {DuracaoTotal}, Banda: {Banda.Nome}";
 
 
-    public Album(Banda banda)
+    public Album(string nome, Banda banda)
     {
+        this.Nome = nome;
         this.Banda = banda;
     }
 

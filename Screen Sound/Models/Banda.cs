@@ -7,6 +7,10 @@
     public double AvaliacaoMedia => avaliacoes.Count == 0 ? 0 : avaliacoes.Average();
     public string DescricaoResumida => $"Banda: {Nome}, Avaliação: {AvaliacaoMedia}";
 
+    public Banda(string nome)
+    {
+        this.Nome = nome;
+    }
 
     public void AdicionarAvaliacao(int avaliacao)
     {

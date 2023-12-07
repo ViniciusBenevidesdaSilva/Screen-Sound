@@ -29,8 +29,7 @@
 
         if (banda is not null)
         {
-            Album novoAlbum = new Album(banda);
-            novoAlbum.Nome = nomeDoAlbum;
+            Album novoAlbum = new Album(nomeDoAlbum, banda);
 
             albumService.RegistrarAlbum(novoAlbum);
 

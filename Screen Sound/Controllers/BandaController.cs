@@ -9,12 +9,13 @@
 
     public void SolicitarCadastroDeBanda()
     {
-        Banda novaBanda = new Banda();
 
         ScreenSoundUI.ExibirTituloDaOpcao("Registro de Banda");
 
         ScreenSoundUI.EscreverFormatado("Digite o nome da banda: ", pularLinha: false);
-        novaBanda.Nome = Console.ReadLine()!;
+        string nomeDaBanda = Console.ReadLine()!;
+
+        Banda novaBanda = new(nomeDaBanda);
 
         bandaService.RegistrarBanda(novaBanda);
 

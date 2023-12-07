@@ -38,11 +38,12 @@
 
         if (album is not null)
         {
-            Musica novaMusica = new Musica(album);
-            novaMusica.Nome = nomeDaMusica;
-            novaMusica.Duracao = duracaoDaMusica;
-            novaMusica.Genero = new Genero() { Nome = nomeDoGenero };
-            novaMusica.Disponivel = disponivelNoPlano;
+            Musica novaMusica = new Musica(nomeDaMusica, album)
+            {
+                Duracao = duracaoDaMusica,
+                Genero = new Genero() { Nome = nomeDoGenero },
+                Disponivel = disponivelNoPlano
+            };
 
             musicaService.RegistrarMusica(novaMusica);
 

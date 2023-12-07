@@ -5,13 +5,13 @@
     public Genero Genero { get; set; }
     public int Duracao { get; set; }
     public bool Disponivel { get; set; }
-    public string DescricaoResumida => $"Música: {Nome}, Álbum: {Album.Nome}"; 
+    public string DescricaoResumida => $"Música: {Nome}, Álbum: {Album.Nome}";
 
-    public Musica(Album album)
+    public Musica(string nome, Album album)
     {
+        this.Nome = nome;
         this.Album = album;
     }
-
 
     public void ExibirFichaTecnica()
     {
