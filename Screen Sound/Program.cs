@@ -163,21 +163,21 @@ void RegistrarMusica()
     Musica novaMusica = new Musica();
     
     Console.Write("\tDigite o nome da música: ");
-    novaMusica.nome = Console.ReadLine()!;
+    novaMusica.Nome = Console.ReadLine()!;
     
     Console.Write("\tDigite o artista da música: ");
-    novaMusica.artista = Console.ReadLine()!; 
+    novaMusica.Artista = Console.ReadLine()!; 
     
     Console.Write("\tDigite a duração da música: ");
-    novaMusica.duracao = int.Parse(Console.ReadLine()!); 
+    novaMusica.Duracao = int.Parse(Console.ReadLine()!); 
     
     Console.Write("\tDigite [S] se a música estiver disponível ou [N] caso contrário: ");
-    novaMusica.disponivel = Console.ReadLine()!.ToUpper()[0] == 'S';
+    novaMusica.Disponivel = Console.ReadLine()!.ToUpper()[0] == 'S';
 
 
     musicasRegistradas.Add(novaMusica);
     
-    Console.WriteLine($"\n\tA música '{novaMusica.nome}' foi registrada com sucesso!");
+    Console.WriteLine($"\n\tA música '{novaMusica.Nome}' foi registrada com sucesso!");
 
     Console.Write("\n\tDigite uma tecla para voltar ao menu ");
     Console.ReadKey();
