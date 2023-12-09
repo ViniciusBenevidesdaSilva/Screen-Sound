@@ -6,7 +6,7 @@ internal class Avaliacao
 
     public Avaliacao(int nota)
     {
-        Nota = nota;
+        Nota = Math.Clamp(nota, 0, 10);
     }
 
     public static Avaliacao Parse(string texto)
