@@ -1,5 +1,9 @@
-﻿class Episodio
-{    
+﻿using Screen_Sound.UI;
+
+namespace Screen_Sound.Models;
+
+internal class Episodio
+{
     private readonly List<string> convidados = new();
 
     public int Ordem { get; set; }

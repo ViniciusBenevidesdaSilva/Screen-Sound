@@ -1,6 +1,10 @@
-﻿class Podcast
+﻿using Screen_Sound.UI;
+
+namespace Screen_Sound.Models;
+
+internal class Podcast
 {
-    private List<Episodio> episodios = new List<Episodio>();
+    private readonly List<Episodio> episodios = new();
 
     public string Host { get; set; }
     public string Nome { get; set; }

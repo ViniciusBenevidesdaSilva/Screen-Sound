@@ -1,4 +1,8 @@
-﻿class Musica
+﻿using Screen_Sound.UI;
+
+namespace Screen_Sound.Models;
+
+internal class Musica
 {
     public string Nome { get; set; }
     public Album Album { get; set; }
@@ -19,7 +23,7 @@
         ScreenSoundUI.EscreverFormatado($"\t\tÁlbum: {Album?.Nome}.");
         ScreenSoundUI.EscreverFormatado($"\t\tDuração: {Duracao} s.");
         ScreenSoundUI.EscreverFormatado($"\t\tGênero: {Genero?.Nome}.");
-        
+
         if (Disponivel)
         {
             ScreenSoundUI.EscreverFormatado("\t\tDisponível no plano.");

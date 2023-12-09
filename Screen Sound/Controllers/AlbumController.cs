@@ -1,4 +1,10 @@
-﻿class AlbumController
+﻿using Screen_Sound.Models;
+using Screen_Sound.Services;
+using Screen_Sound.UI;
+
+namespace Screen_Sound.Controllers;
+
+internal class AlbumController
 {
     private readonly AlbumService albumService;
     private readonly BandaService bandaService;
@@ -29,7 +35,7 @@
 
         if (banda is not null)
         {
-            Album novoAlbum = new Album(nomeDoAlbum, banda);
+            Album novoAlbum = new(nomeDoAlbum, banda);
 
             albumService.RegistrarAlbum(novoAlbum);
 

@@ -1,4 +1,10 @@
-﻿class MusicaController
+﻿using Screen_Sound.Models;
+using Screen_Sound.Services;
+using Screen_Sound.UI;
+
+namespace Screen_Sound.Controllers;
+
+internal class MusicaController
 {
     private readonly MusicaService musicaService;
     private readonly AlbumService albumService;
@@ -13,7 +19,7 @@
     {
         ScreenSoundUI.ExibirTituloDaOpcao("Registro de Música");
 
-        if(albumService.QtdAlbunsRegistradas == 0)
+        if (albumService.QtdAlbunsRegistradas == 0)
         {
             ScreenSoundUI.EscreverFormatado("Nenhum álbum registrado!");
             return;
@@ -27,7 +33,7 @@
 
         ScreenSoundUI.EscreverFormatado("Digite o nome do Álbum: ", pularLinha: false);
         string nomeDoAlbum = Console.ReadLine()!;
-        
+
         ScreenSoundUI.EscreverFormatado("Digite o nome do Gênero da música: ", pularLinha: false);
         string nomeDoGenero = Console.ReadLine()!;
 
@@ -38,7 +44,7 @@
 
         if (album is not null)
         {
-            Musica novaMusica = new Musica(nomeDaMusica, album)
+            Musica novaMusica = new(nomeDaMusica, album)
             {
                 Duracao = duracaoDaMusica,
                 Genero = new Genero() { Nome = nomeDoGenero },

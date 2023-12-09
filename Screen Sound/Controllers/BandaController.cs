@@ -1,4 +1,10 @@
-﻿class BandaController
+﻿using Screen_Sound.Models;
+using Screen_Sound.Services;
+using Screen_Sound.UI;
+
+namespace Screen_Sound.Controllers;
+
+internal class BandaController
 {
     private readonly BandaService bandaService;
 
@@ -38,7 +44,7 @@
             }
         }
     }
-    
+
     public void SolicitarAvaliacaoDeBanda()
     {
         ScreenSoundUI.ExibirTituloDaOpcao("Avaliar Banda Registrada");
@@ -49,11 +55,11 @@
         if (bandaService.PesquisarBandaPorNome(nomeDaBanda) is not null)
         {
             ScreenSoundUI.EscreverFormatado($"Informe sua nota para a Banda {nomeDaBanda}: ", pularLinha: false);
-            int notaInformada = int.Parse(Console.ReadLine()!);
+            Avaliacao avaliacao = Avaliacao.Parse(Console.ReadLine()!);
 
-            bandaService.RegistrarAvaliacao(nomeDaBanda, notaInformada);
+            bandaService.RegistrarAvaliacao(nomeDaBanda, avaliacao);
 
-            ScreenSoundUI.EscreverFormatado($"A nota {notaInformada} foi registrada com sucesso para a Banda '{nomeDaBanda}'!");
+            ScreenSoundUI.EscreverFormatado($"A nota {avaliacao.Nota} foi registrada com sucesso para a Banda '{nomeDaBanda}'!");
         }
         else
         {

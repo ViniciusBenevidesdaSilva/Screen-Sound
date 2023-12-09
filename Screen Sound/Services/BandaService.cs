@@ -1,6 +1,10 @@
-﻿class BandaService
+﻿using Screen_Sound.Models;
+
+namespace Screen_Sound.Services;
+
+internal class BandaService
 {
-    public List<Banda> BandasRegistradas { get; } = new List<Banda>();
+    public List<Banda> BandasRegistradas { get; } = new();
 
     public int QtdBandasRegistradas => BandasRegistradas.Count;
 
@@ -21,7 +25,7 @@
         return BandasRegistradas.FirstOrDefault(b => b.Nome.ToUpper() == nomeDaBanda.ToUpper());
     }
 
-    public void RegistrarAvaliacao(string nomeDaBanda, int avalicao)
+    public void RegistrarAvaliacao(string nomeDaBanda, Avaliacao avalicao)
     {
         PesquisarBandaPorNome(nomeDaBanda)?.AdicionarAvaliacao(avalicao);
     }

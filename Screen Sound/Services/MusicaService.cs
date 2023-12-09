@@ -1,9 +1,13 @@
-﻿ class MusicaService
+﻿using Screen_Sound.Models;
+
+namespace Screen_Sound.Services;
+
+internal class MusicaService
 {
     public List<Musica> MusicasRegistradas { get; } = new List<Musica>();
 
     public int QtdMusicasRegistradas => MusicasRegistradas.Count;
-    
+
     private MusicaService() { }
 
 

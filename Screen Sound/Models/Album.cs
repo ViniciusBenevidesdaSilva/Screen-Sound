@@ -1,6 +1,10 @@
-﻿class Album
+﻿using Screen_Sound.UI;
+
+namespace Screen_Sound.Models;
+
+internal class Album
 {
-    private List<Musica> musicas = new List<Musica>();
+    private readonly List<Musica> musicas = new List<Musica>();
 
     public string Nome { get; set; }
     public int DuracaoTotal => musicas.Count == 0 ? 0 : musicas.Sum(m => m.Duracao);

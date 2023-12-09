@@ -1,6 +1,8 @@
-﻿static class ScreenSoundUI
+﻿namespace Screen_Sound.UI;
+
+internal class ScreenSoundUI
 {
-    private static string mensagemDeBoasVindas = "\tBoas vindas ao Screen Sound!";
+    private static readonly string mensagemDeBoasVindas = "\tBoas vindas ao Screen Sound!";
 
 
     public static void ExibirLogo()

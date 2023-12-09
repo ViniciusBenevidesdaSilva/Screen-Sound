@@ -1,9 +1,13 @@
-﻿ class AlbumService
+﻿using Screen_Sound.Models;
+
+namespace Screen_Sound.Services;
+
+internal class AlbumService
 {
     public List<Album> AlbunsRegistrados { get; } = new List<Album>();
 
     public int QtdAlbunsRegistradas => AlbunsRegistrados.Count;
-    
+
     private AlbumService() { }
 
 
