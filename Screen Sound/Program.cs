@@ -1,14 +1,10 @@
-﻿using Screen_Sound.Controllers;
-using Screen_Sound.UI;
+﻿using Screen_Sound.UI;
+using Screen_Sound.UI.Menus;
 
 namespace Screen_Sound;
 
 internal class Program
 {
-    static readonly BandaController bandaController = new();
-    static readonly AlbumController albumController = new();
-    static readonly MusicaController musicaController = new();
-
     private static void Main(string[] args)
     {
         try
@@ -24,54 +20,36 @@ internal class Program
 
     private static void IniciarPrograma()
     {
-        int opcaoEscolhida = -1;
+        Dictionary<int, MenuBase> opcoes = new()
+        {
+            { 0, new MenuSair() },
+            { 1, new MenuCadastrarBanda() },
+            { 2, new MenuCadastrarAlbum() },
+            { 3, new MenuCadastrarMusica() },
+            { 4, new MenuAvaliarBanda() },
+            { 5, new MenuExibirDetalhes() },
+        };
 
         while (true)
         {
             ScreenSoundUI.ExibirMenu();
             try
             {
-                opcaoEscolhida = int.Parse(Console.ReadLine()!);
-
-                switch (opcaoEscolhida)
+                int opcaoEscolhida = int.Parse(Console.ReadLine()!);
+                
+                if(!opcoes.ContainsKey(opcaoEscolhida))
                 {
-                    case 1:
-                        bandaController.SolicitarCadastroDeBanda();
-                        break;
-                    case 2:
-                        bandaController.MostrarBandasRegistradas();
-                        break;
-                    case 3:
-                        bandaController.SolicitarAvaliacaoDeBanda();
-                        break;
-                    case 4:
-                        bandaController.ExibirMediaBanda();
-                        break;
-                    case 5:
-                        albumController.SolicitarCadastroDeAlbum();
-                        break;
-                    case 6:
-                        albumController.MostrarAlbunsRegistrados();
-                        break;
-                    case 7:
-                        musicaController.SolicitarCadastroDeMusica();
-                        break;
-                    case 8:
-                        musicaController.MostrarMusicasRegistradas();
-                        break;
-                    case 9:
-                        bandaController.MostrarListagemGeral();
-                        break;
-                    case 0:
-                        ScreenSoundUI.EscreverFormatado("Tchau Tchau :)");
-                        break;
-                    default:
-                        ScreenSoundUI.EscreverFormatado("Opção Inválida!");
+                    ScreenSoundUI.EscreverFormatado("Opção Inválida!");
+                }
+                else
+                {
+                    MenuBase menuASerExibido = opcoes[opcaoEscolhida];
+                    
+                    menuASerExibido.Exibir();
+
+                    if (opcaoEscolhida == 0)
                         break;
                 }
-
-                if (opcaoEscolhida == 0)
-                    break;
             }
             catch
             {

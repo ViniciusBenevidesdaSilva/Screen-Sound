@@ -1,17 +1,15 @@
-﻿using Screen_Sound.UI;
-
-namespace Screen_Sound.Models;
+﻿namespace Screen_Sound.Models;
 
 internal class Album
 {
-    private readonly List<Musica> musicas = new List<Musica>();
 
     public string Nome { get; set; }
-    public int DuracaoTotal => musicas.Count == 0 ? 0 : musicas.Sum(m => m.Duracao);
+    public int DuracaoTotal => Musicas.Count == 0 ? 0 : Musicas.Sum(m => m.Duracao);
     public Banda Banda { get; set; }
-    public string DescricaoResumida => $"Álbum: {Nome}, Duração: {DuracaoTotal}, Banda: {Banda.Nome}";
-
-
+    public string DescricaoResumida => $"Álbum: {Nome}, Duração: {DuracaoTotal}";
+    public List<Musica> Musicas { get; } = new();
+    public int QtdMusicas => Musicas.Count;
+    
     public Album(string nome, Banda banda)
     {
         this.Nome = nome;
@@ -20,19 +18,6 @@ internal class Album
 
     public void AdicionarMusica(Musica musica)
     {
-        musicas.Add(musica);
-    }
-
-    public void ExibirMusicasDoAlbum()
-    {
-        ScreenSoundUI.EscreverFormatado($"\tLista de músicas do álbum '{Nome}'.\n");
-
-        foreach (var musica in musicas)
-        {
-            musica.ExibirFichaTecnica();
-            Console.WriteLine();
-        }
-
-        ScreenSoundUI.EscreverFormatado($"\tA duração desse álbum é de {DuracaoTotal} segundos.");
+        Musicas.Add(musica);
     }
 }
